@@ -1,0 +1,113 @@
+@prefix order: <http://localhost:3030/orders/#> .
+@prefix mosaik: <http://www.mosaik-projekt.de/vocab/#> .
+<http://me> mosaik:ordered order:equippedModule .
+
+
+----------- QUERY TO MARK MACHINE AS PRODUCER ------------------------
+
+prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix steps: <http://www.mosaik-projekt.de/vocab/production/#>
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+prefix schema: <https://schema.org/>
+prefix td: <https://www.w3.org/2019/wot/td#>
+
+CONSTRUCT {
+    ?interaction stigmergy:productionMarker [
+       stigmergy:markerFor ?order ;
+       schema:supply ?supply ] .
+}
+WHERE {
+    <http://me> mosaik:ordered ?order .
+    
+    <http://me> mosaik:next ?product .
+    
+    ?recipe a schema:HowTo ;
+      schema:about ?product ;
+      schema:step  ?step ;
+      schema:supply [ schema:item ?supply ] .
+      
+    ?producer a td:Thing;
+    td:providesInteractionPattern ?interaction .
+    
+    ?interaction schema:step ?step .
+}
+
+---------------------- QUERY TO MARK A DISPENSER FOR PRODUCTION ---------
+
+prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix steps: <http://www.mosaik-projekt.de/vocab/production/#>
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+prefix schema: <https://schema.org/>
+prefix td: <https://www.w3.org/2019/wot/td#>
+
+CONSTRUCT {
+    
+    ?markerUri a stigmergy:Marker;
+    stigmergy:markerFor ?order ;
+    schema:yield ?product ;
+    stigmergy:marked ?interaction .
+}
+WHERE {
+
+    { SELECT DISTINCT ?markerUri ?interaction ?order ?product WHERE
+    {
+    <http://me> mosaik:ordered ?order .
+   
+    { SELECT ?markerUri ?product WHERE { 
+      <http://me> mosaik:next ?product .
+      BIND(uri(uuid()) as ?markerUri)
+    
+    }} .    
+    ?producer td:providesInteractionPattern ?interaction ;
+     schema:yield ?product .
+    ?interaction schema:step steps:dispense.    
+    }} .
+    
+}
+---------------------- QUERY TO MARK NEXT PRODUCT FOR MARK --------------
+
+prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+
+DELETE
+{
+  <http://me> mosaik:next ?old .
+}
+INSERT
+{
+  <http://me> mosaik:next ?candidate .
+}
+WHERE
+{
+  <http://me> mosaik:next ?old.
+   <http://me> mosaik:myPrerequisite ?candidate .
+   FILTER NOT EXISTS {
+     <http://me> stigmergy:marked ?candidate .
+    }
+}
+
+
+
+
+prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+prefix schema: <https://schema.org/>
+prefix td: <https://www.w3.org/2019/wot/td#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+SELECT ?marker ?s WHERE {
+
+   {SELECT DISTINCT ?marker ?s WHERE
+   {
+   
+   ?marker a stigmergy:Marker;
+   schema:supply ?s ;
+   stigmergy:markerFor ?order ;
+   stigmergy:marked ?interaction .
+   
+   <http://me> mosaik:ordered ?order .
+    
+   FILTER NOT EXISTS { <http://me> mosaik:followed ?marker }  
+   
+    }}
+}

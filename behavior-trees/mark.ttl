@@ -1,0 +1,138 @@
+<http://localhost:8090/rdf4j/repositories/behaviors#BT_85e6947c-edc7-440e-acb9-c5346df55580> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#BehaviorTree>. <http://localhost:8090/rdf4j/repositories/behaviors#BT_85e6947c-edc7-440e-acb9-c5346df55580> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Root>. <http://localhost:8090/rdf4j/repositories/behaviors#BT_85e6947c-edc7-440e-acb9-c5346df55580> <http://www.ajan.de/behavior/bt-ns#hasChild> <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-b4b08d76-a73e-4a89-9209-6f90e74261d8>. <http://localhost:8090/rdf4j/repositories/behaviors#BT_85e6947c-edc7-440e-acb9-c5346df55580> <http://www.w3.org/2000/01/rdf-schema#label> """MOSAIK_Marker"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-b4b08d76-a73e-4a89-9209-6f90e74261d8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Sequence>. <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-b4b08d76-a73e-4a89-9209-6f90e74261d8> <http://www.ajan.de/behavior/bt-ns#hasChildren> _:b801. <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-b4b08d76-a73e-4a89-9209-6f90e74261d8> <http://www.w3.org/2000/01/rdf-schema#label> """defaultSequence"""^^xsd:string. _:b801 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#HandleEvent-8ff4aec3-36dd-4cc3-b1a6-5f316709b47d>. _:b801 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b802. <http://localhost:8090/rdf4j/repositories/behaviors#HandleEvent-8ff4aec3-36dd-4cc3-b1a6-5f316709b47d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#HandleEvent>. <http://localhost:8090/rdf4j/repositories/behaviors#HandleEvent-8ff4aec3-36dd-4cc3-b1a6-5f316709b47d> <http://www.ajan.de/behavior/bt-ns#validate> _:b723. <http://localhost:8090/rdf4j/repositories/behaviors#HandleEvent-8ff4aec3-36dd-4cc3-b1a6-5f316709b47d> <http://www.w3.org/2000/01/rdf-schema#comment> """"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#HandleEvent-8ff4aec3-36dd-4cc3-b1a6-5f316709b47d> <http://www.w3.org/2000/01/rdf-schema#label> """handleMarkerEvent"""^^xsd:string. _:b723 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#ConstructQuery>. _:b723 <http://www.ajan.de/behavior/bt-ns#sparql> """CONSTRUCT {
+?s ?p ?o
+}
+WHERE {
+ GRAPH <http://localhost:8090/rdf4j/repositories/agents#EV_f9067994-894a-4219-a689-955ea005d3d2>
+ {
+ ?s ?p ?o .
+ }
+}"""^^xsd:string. _:b723 <http://www.ajan.de/behavior/bt-ns#targetBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b802 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#QueryDomain-a0039e7c-5a7e-47e5-8239-e2bc394f14a1>. _:b802 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b803. <http://localhost:8090/rdf4j/repositories/behaviors#QueryDomain-a0039e7c-5a7e-47e5-8239-e2bc394f14a1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#QueryDomain>. <http://localhost:8090/rdf4j/repositories/behaviors#QueryDomain-a0039e7c-5a7e-47e5-8239-e2bc394f14a1> <http://www.ajan.de/behavior/bt-ns#queryUri> _:b757. <http://localhost:8090/rdf4j/repositories/behaviors#QueryDomain-a0039e7c-5a7e-47e5-8239-e2bc394f14a1> <http://www.ajan.de/behavior/bt-ns#targetBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. <http://localhost:8090/rdf4j/repositories/behaviors#QueryDomain-a0039e7c-5a7e-47e5-8239-e2bc394f14a1> <http://www.w3.org/2000/01/rdf-schema#comment> """"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#QueryDomain-a0039e7c-5a7e-47e5-8239-e2bc394f14a1> <http://www.w3.org/2000/01/rdf-schema#label> """defaultQueryDomain"""^^xsd:string. _:b757 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#QueryUri>. _:b757 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#SelectQuery>. _:b757 <http://www.ajan.de/behavior/bt-ns#originBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b757 <http://www.ajan.de/behavior/bt-ns#sparql> """PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?requestURI WHERE {
+   BIND (STRDT("http://localhost:3030/stigmergy_production/data", xsd:anyURI) as ?requestURI)
+}"""^^xsd:string. _:b803 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#Update-fa035f96-4c01-4dc1-8734-01db412e644e>. _:b803 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b804. <http://localhost:8090/rdf4j/repositories/behaviors#Update-fa035f96-4c01-4dc1-8734-01db412e644e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Update>. <http://localhost:8090/rdf4j/repositories/behaviors#Update-fa035f96-4c01-4dc1-8734-01db412e644e> <http://www.ajan.de/behavior/bt-ns#query> _:b756. <http://localhost:8090/rdf4j/repositories/behaviors#Update-fa035f96-4c01-4dc1-8734-01db412e644e> <http://www.w3.org/2000/01/rdf-schema#comment> """"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#Update-fa035f96-4c01-4dc1-8734-01db412e644e> <http://www.w3.org/2000/01/rdf-schema#label> """setOrderToMark"""^^xsd:string. _:b756 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#UpdateQuery>. _:b756 <http://www.ajan.de/behavior/bt-ns#originBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b756 <http://www.ajan.de/behavior/bt-ns#sparql> """prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix schema: <https://schema.org/>
+
+INSERT {
+     <http://me> mosaik:next ?product .
+}
+WHERE{
+	?s mosaik:ordered ?o .
+	?o schema:about ?product .
+}"""^^xsd:string. _:b804 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#UntilFail-7f43c981-8905-4ca6-9489-f232ea7f187b>. _:b804 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>. <http://localhost:8090/rdf4j/repositories/behaviors#UntilFail-7f43c981-8905-4ca6-9489-f232ea7f187b> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#UntilFail>. <http://localhost:8090/rdf4j/repositories/behaviors#UntilFail-7f43c981-8905-4ca6-9489-f232ea7f187b> <http://www.ajan.de/behavior/bt-ns#hasChild> <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-a26bf82b-7073-4e0e-a3ae-6278a78c05f8>. <http://localhost:8090/rdf4j/repositories/behaviors#UntilFail-7f43c981-8905-4ca6-9489-f232ea7f187b> <http://www.w3.org/2000/01/rdf-schema#label> """defaultUntilFail"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-a26bf82b-7073-4e0e-a3ae-6278a78c05f8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Sequence>. <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-a26bf82b-7073-4e0e-a3ae-6278a78c05f8> <http://www.ajan.de/behavior/bt-ns#hasChildren> _:b798. <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-a26bf82b-7073-4e0e-a3ae-6278a78c05f8> <http://www.w3.org/2000/01/rdf-schema#label> """defaultSequence"""^^xsd:string. _:b798 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#Parallel-7c813ffe-a8b1-45e8-ace8-059695a36b3c>. _:b798 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b799. <http://localhost:8090/rdf4j/repositories/behaviors#Parallel-7c813ffe-a8b1-45e8-ace8-059695a36b3c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Parallel>. <http://localhost:8090/rdf4j/repositories/behaviors#Parallel-7c813ffe-a8b1-45e8-ace8-059695a36b3c> <http://www.ajan.de/behavior/bt-ns#hasChildren> _:b779. <http://localhost:8090/rdf4j/repositories/behaviors#Parallel-7c813ffe-a8b1-45e8-ace8-059695a36b3c> <http://www.w3.org/2000/01/rdf-schema#label> """defaultParallel"""^^xsd:string. _:b779 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#Message-92403faf-f08d-4a2e-a4d5-3e4a48696423>. _:b779 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b780. <http://localhost:8090/rdf4j/repositories/behaviors#Message-92403faf-f08d-4a2e-a4d5-3e4a48696423> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Message>. <http://localhost:8090/rdf4j/repositories/behaviors#Message-92403faf-f08d-4a2e-a4d5-3e4a48696423> <http://www.ajan.de/behavior/bt-ns#binding> _:b725. <http://localhost:8090/rdf4j/repositories/behaviors#Message-92403faf-f08d-4a2e-a4d5-3e4a48696423> <http://www.ajan.de/behavior/bt-ns#queryUri> _:b722. <http://localhost:8090/rdf4j/repositories/behaviors#Message-92403faf-f08d-4a2e-a4d5-3e4a48696423> <http://www.ajan.de/behavior/bt-ns#targetBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. <http://localhost:8090/rdf4j/repositories/behaviors#Message-92403faf-f08d-4a2e-a4d5-3e4a48696423> <http://www.w3.org/2000/01/rdf-schema#comment> """"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#Message-92403faf-f08d-4a2e-a4d5-3e4a48696423> <http://www.w3.org/2000/01/rdf-schema#label> """markDispenser"""^^xsd:string. _:b725 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/http#Request>. _:b725 <http://www.w3.org/2006/http#body> _:b726. _:b725 <http://www.w3.org/2006/http#headers> _:b727. _:b725 <http://www.w3.org/2006/http#httpVersion> """1.1"""^^xsd:string. _:b725 <http://www.w3.org/2006/http#mthd> <http://www.w3.org/2008/http-methods#POST>. _:b726 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/actn#Payload>. _:b726 <http://www.ajan.de/behavior/bt-ns#query> _:b729. _:b729 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#ConstructQuery>. _:b729 <http://www.ajan.de/behavior/bt-ns#originBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b729 <http://www.ajan.de/behavior/bt-ns#sparql> """prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix steps: <http://www.mosaik-projekt.de/vocab/production/#>
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+prefix schema: <https://schema.org/>
+prefix td: <https://www.w3.org/2019/wot/td#>
+
+CONSTRUCT {
+    
+    ?markerUri a stigmergy:Marker;
+    stigmergy:markerFor ?order ;
+    schema:yield ?product ;
+    stigmergy:marked ?interaction .
+}
+WHERE {
+
+    { SELECT DISTINCT ?markerUri ?interaction ?order ?product WHERE
+    {
+    <http://me> mosaik:ordered ?order .
+   
+    { SELECT ?markerUri ?product WHERE { 
+      <http://me> mosaik:next ?product .
+      BIND(uri(uuid()) as ?markerUri)
+    
+    }} .    
+    ?producer td:providesInteractionPattern ?interaction ;
+     schema:yield ?product .
+    ?interaction schema:step steps:dispense.    
+    }} .
+    
+}"""^^xsd:string. _:b727 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b728. _:b727 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>. _:b728 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/http#Header>. _:b728 <http://www.w3.org/2006/http#fieldValue> """text/turtle"""^^xsd:string. _:b728 <http://www.w3.org/2006/http#hdrName> <http://www.w3.org/2008/http-headers#content-type>. _:b722 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#QueryUri>. _:b722 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#SelectQuery>. _:b722 <http://www.ajan.de/behavior/bt-ns#originBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b722 <http://www.ajan.de/behavior/bt-ns#sparql> """PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?requestURI WHERE {
+   BIND (STRDT("http://localhost:3030/stigmergy_production/data", xsd:anyURI) as ?requestURI)
+}"""^^xsd:string. _:b780 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#Message-d2f44679-9f41-411f-a048-1caea4b4c68c>. _:b780 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>. <http://localhost:8090/rdf4j/repositories/behaviors#Message-d2f44679-9f41-411f-a048-1caea4b4c68c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Message>. <http://localhost:8090/rdf4j/repositories/behaviors#Message-d2f44679-9f41-411f-a048-1caea4b4c68c> <http://www.ajan.de/behavior/bt-ns#binding> _:b733. <http://localhost:8090/rdf4j/repositories/behaviors#Message-d2f44679-9f41-411f-a048-1caea4b4c68c> <http://www.ajan.de/behavior/bt-ns#queryUri> _:b724. <http://localhost:8090/rdf4j/repositories/behaviors#Message-d2f44679-9f41-411f-a048-1caea4b4c68c> <http://www.ajan.de/behavior/bt-ns#targetBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. <http://localhost:8090/rdf4j/repositories/behaviors#Message-d2f44679-9f41-411f-a048-1caea4b4c68c> <http://www.w3.org/2000/01/rdf-schema#comment> """"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#Message-d2f44679-9f41-411f-a048-1caea4b4c68c> <http://www.w3.org/2000/01/rdf-schema#label> """markProduction"""^^xsd:string. _:b733 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/http#Request>. _:b733 <http://www.w3.org/2006/http#body> _:b734. _:b733 <http://www.w3.org/2006/http#headers> _:b735. _:b733 <http://www.w3.org/2006/http#httpVersion> """1.1"""^^xsd:string. _:b733 <http://www.w3.org/2006/http#mthd> <http://www.w3.org/2008/http-methods#POST>. _:b734 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/actn#Payload>. _:b734 <http://www.ajan.de/behavior/bt-ns#query> _:b749. _:b749 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#ConstructQuery>. _:b749 <http://www.ajan.de/behavior/bt-ns#originBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b749 <http://www.ajan.de/behavior/bt-ns#sparql> """prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix steps: <http://www.mosaik-projekt.de/vocab/production/#>
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+prefix schema: <https://schema.org/>
+prefix td: <https://www.w3.org/2019/wot/td#>
+prefix dct: <http://purl.org/dc/terms/>
+
+CONSTRUCT {
+    ?markerUri a stigmergy:Marker;
+       stigmergy:markerFor ?order ;
+       stigmergy:marked ?interaction ;
+       schema:yield ?product ;
+       schema:supply ?supply .
+}
+WHERE {
+{ SELECT DISTINCT ?order ?product ?supply ?interaction ?markerUri WHERE {
+    <http://me> mosaik:ordered ?order .
+
+    { SELECT ?product ?markerUri WHERE {
+      <http://me> mosaik:next ?product .  
+      BIND(uuid() as ?markerUri)
+    }}.
+    
+    ?order dct:identifier ?orderName .    
+    ?recipe a schema:HowTo ;
+      schema:about ?product ;
+      schema:step  ?step ;
+      schema:supply [ schema:item ?supply ] .
+      
+    ?producer a td:Thing;
+    td:providesInteractionPattern ?interaction .
+    
+    ?interaction schema:step ?step ;
+    td:interactionName ?interactionName .
+  } } .
+}"""^^xsd:string. _:b735 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:b736. _:b735 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>. _:b736 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/http#Header>. _:b736 <http://www.w3.org/2006/http#fieldValue> """text/turtle"""^^xsd:string. _:b736 <http://www.w3.org/2006/http#hdrName> <http://www.w3.org/2008/http-headers#content-type>. _:b724 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#QueryUri>. _:b724 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#SelectQuery>. _:b724 <http://www.ajan.de/behavior/bt-ns#originBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b724 <http://www.ajan.de/behavior/bt-ns#sparql> """PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?requestURI WHERE {
+   BIND (STRDT("http://localhost:3030/stigmergy_production/data", xsd:anyURI) as ?requestURI)
+}"""^^xsd:string. _:b799 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#Update-59877713-18cd-411a-8502-abcd7e3e4c6f>. _:b799 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b800. <http://localhost:8090/rdf4j/repositories/behaviors#Update-59877713-18cd-411a-8502-abcd7e3e4c6f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Update>. <http://localhost:8090/rdf4j/repositories/behaviors#Update-59877713-18cd-411a-8502-abcd7e3e4c6f> <http://www.ajan.de/behavior/bt-ns#query> _:b760. <http://localhost:8090/rdf4j/repositories/behaviors#Update-59877713-18cd-411a-8502-abcd7e3e4c6f> <http://www.w3.org/2000/01/rdf-schema#comment> """"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#Update-59877713-18cd-411a-8502-abcd7e3e4c6f> <http://www.w3.org/2000/01/rdf-schema#label> """rememberAsMarked"""^^xsd:string. _:b760 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#UpdateQuery>. _:b760 <http://www.ajan.de/behavior/bt-ns#originBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b760 <http://www.ajan.de/behavior/bt-ns#sparql> """prefix mosaik: <http://www.mosaik-projekt.de/vocab/#> 
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+
+INSERT
+{
+   <http://me> stigmergy:marked ?product .
+}
+WHERE
+{
+  <http://me> mosaik:next ?product .
+}"""^^xsd:string. _:b800 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-9d55fa0e-aee3-4c7c-a607-8ae146c5c293>. _:b800 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>. <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-9d55fa0e-aee3-4c7c-a607-8ae146c5c293> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Sequence>. <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-9d55fa0e-aee3-4c7c-a607-8ae146c5c293> <http://www.ajan.de/behavior/bt-ns#hasChildren> _:b796. <http://localhost:8090/rdf4j/repositories/behaviors#Sequence-9d55fa0e-aee3-4c7c-a607-8ae146c5c293> <http://www.w3.org/2000/01/rdf-schema#label> """defaultSequence"""^^xsd:string. _:b796 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#Update-fbc5f271-26fa-4287-a33d-328b80f6f39d>. _:b796 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b797. <http://localhost:8090/rdf4j/repositories/behaviors#Update-fbc5f271-26fa-4287-a33d-328b80f6f39d> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Update>. <http://localhost:8090/rdf4j/repositories/behaviors#Update-fbc5f271-26fa-4287-a33d-328b80f6f39d> <http://www.ajan.de/behavior/bt-ns#query> _:b764. <http://localhost:8090/rdf4j/repositories/behaviors#Update-fbc5f271-26fa-4287-a33d-328b80f6f39d> <http://www.w3.org/2000/01/rdf-schema#comment> """"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#Update-fbc5f271-26fa-4287-a33d-328b80f6f39d> <http://www.w3.org/2000/01/rdf-schema#label> """getSupplyOfCurrent"""^^xsd:string. _:b764 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#UpdateQuery>. _:b764 <http://www.ajan.de/behavior/bt-ns#originBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b764 <http://www.ajan.de/behavior/bt-ns#sparql> """prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix schema: <https://schema.org/>
+
+INSERT
+{
+   <http://me> mosaik:myPrerequisite ?p .
+}
+WHERE
+{
+    <http://me> mosaik:next ?next .
+    ?s a schema:HowTo ;
+        schema:about ?next;
+        schema:supply [
+            schema:item ?p
+        ] .
+    
+}"""^^xsd:string. _:b797 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://localhost:8090/rdf4j/repositories/behaviors#Update-8d5b74b7-be37-467d-b445-e753a34110cb>. _:b797 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil>. <http://localhost:8090/rdf4j/repositories/behaviors#Update-8d5b74b7-be37-467d-b445-e753a34110cb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#Update>. <http://localhost:8090/rdf4j/repositories/behaviors#Update-8d5b74b7-be37-467d-b445-e753a34110cb> <http://www.ajan.de/behavior/bt-ns#query> _:b761. <http://localhost:8090/rdf4j/repositories/behaviors#Update-8d5b74b7-be37-467d-b445-e753a34110cb> <http://www.w3.org/2000/01/rdf-schema#comment> """"""^^xsd:string. <http://localhost:8090/rdf4j/repositories/behaviors#Update-8d5b74b7-be37-467d-b445-e753a34110cb> <http://www.w3.org/2000/01/rdf-schema#label> """setNextToMark"""^^xsd:string. _:b761 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.ajan.de/behavior/bt-ns#UpdateQuery>. _:b761 <http://www.ajan.de/behavior/bt-ns#originBase> <http://www.ajan.de/ajan-ns#AgentKnowledge>. _:b761 <http://www.ajan.de/behavior/bt-ns#sparql> """prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+
+DELETE
+{
+  <http://me> mosaik:next ?old .
+}
+INSERT
+{
+  <http://me> mosaik:next ?candidate .
+}
+WHERE
+{
+  <http://me> mosaik:next ?old.
+   <http://me> mosaik:myPrerequisite ?candidate .
+   FILTER NOT EXISTS {
+     <http://me> stigmergy:marked ?candidate .
+    }
+}"""^^xsd:string.
