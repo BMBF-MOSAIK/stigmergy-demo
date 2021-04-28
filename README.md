@@ -13,12 +13,13 @@ simultaneously executed orders. The purpose of the presented coordination algori
 
 ## Setup
 
-### 1. Install AJAN
+### 1. Install Backends
 
 1. Get AJAN-Service from https://github.com/aantakli/AJAN-service/
 2. On commit https://github.com/aantakli/AJAN-service/commit/d27a54471e17f8adc30a1869e06cbe7ca7cc434f , install according to readme
 3. Get the AJAN-Editor from https://github.com/aantakli/AJAN-editor
 4. On commit https://github.com/aantakli/AJAN-editor/commit/ecd132eaae6cb025d3e60e2ec91351bbfa85ed79, install according to readme
+5. Install Fuseki: https://jena.apache.org/documentation/fuseki2/
 
 ### 2. Import resources
 
@@ -31,10 +32,19 @@ simultaneously executed orders. The purpose of the presented coordination algori
 7. Open RDF4j Workbench: http://localhost:8090/workbench
     1. „Repositories“ -> „editor_data“
     2. Add“ -> Uncheck „use base URI as context identifier“ -> „RDF Data File“ -> select`queries/statements_stigmergy.trig` -> Upload
+8. Create dataset in Fuseki:
+    9. Access Fuseki on http://localhost:3030/
+    10.  manage datasets“ -> „add new dataset“ 
+    11.  Name: „stigmergy_production“, „Persistent“
+    12.  „Home“ -> „add Data“ , select provided `domain/smartphone_wot.tll`, upload
+
+
 
 
 ## Running the scenario
 
+1. Create Agents:
+    1. 
 ## Acknowldegements
 
 This work has been supported by the German Federal Ministry for Education and Research (BMBF) as part of the MOSAIK project (grant no. 01IS18070-C).
