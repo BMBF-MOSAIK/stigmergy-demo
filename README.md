@@ -1,5 +1,19 @@
-# stigmergy-demo
-A demonstration of emerging coordination by stigmergic principles in a cyberphysical production scenario
+# Demo: Linked Data as generic Stigmergic Medium for Decentralized Coordination
+
+The resources in this repository demonstrate how principles of stigmergy can be employed to coordinate a cyber-physical production scenario.
+The algorithm that is implemented by the provided resources was originally published in the paper _**"Linked Data as generic Stigmergic Medium for Decentralized
+Coordination"**, (T.Spieldenner, M.Chelli) ; ICSOFT 2021_ .
+
+## Scenario and what is demonstrated
+
+A (simulated) factory receives orders for simple IoT modules on a ”batch size 1” production line as commonly envisioned in Industry 4.0. Once an order is received, it is carried out by employing machines which provide the capabilities to perform manufacturing steps necessary for particular steps during the production process, e.g. providing plastic casts for casings, soldering electric circuits, or fixing the final model. Orders are executed by AI agents. The need for coordination arises as machines are shared between
+simultaneously executed orders. The purpose of the presented coordination algorithm is to find a suitable distribution of machines between agents working on different orders, with the goal to complete each order in shortest possible time.
+
+
+
+## Setup
+
+## Running the scenario
 
 ## Acknowldegements
 
