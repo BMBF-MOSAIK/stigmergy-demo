@@ -52,7 +52,7 @@ WHERE {
     { SELECT DISTINCT ?markerUri ?interaction ?order ?product WHERE
     {
     <http://me> mosaik:ordered ?order .
-   
+
     { SELECT ?markerUri ?product WHERE { 
       <http://me> mosaik:next ?product .
       BIND(uri(uuid()) as ?markerUri)
@@ -87,6 +87,25 @@ WHERE
 }
 
 
+prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+prefix schema: <https://schema.org/>
+prefix td: <https://www.w3.org/2019/wot/td#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix steps: <http://www.mosaik-projekt.de/vocab/production/#>
+
+SELECT DISTINCT ?marker ?result WHERE {
+
+      ?marker schema:yield ?result .
+
+      {SELECT DISTINCT ?marker WHERE {
+      ?marker a stigmergy:Marker .
+
+      FILTER NOT EXISTS {
+        ?marker schema:supply ?supply .
+        FILTER NOT EXISTS { ?existingProduct a ?supply }
+      }}}
+}
 
 
 prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>

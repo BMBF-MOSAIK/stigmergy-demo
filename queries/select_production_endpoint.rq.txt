@@ -1,0 +1,39 @@
+prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+prefix stigmergy: <http://www.mosaik-projekt.de/vocab/stigmergy/#>
+prefix schema: <https://schema.org/>
+prefix td: <https://www.w3.org/2019/wot/td#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix steps: <http://www.mosaik-projekt.de/vocab/production/#>
+
+CONSTRUCT {
+<http://me> mosaik:next ?productionUri .
+<http://me> mosaik:followed ?marker
+}
+WHERE
+{
+   SELECT DISTINCT ?productionUri ?marker WHERE
+   {
+
+   ?marker stigmergy:marked ?interaction .
+   ?interaction a td:InteractionPattern;
+      td:isAccessibleThrough [
+         td:href ?uri
+      ] .
+
+   {SELECT DISTINCT ?marker WHERE {
+      <http://me> mosaik:ordered ?order .
+      ?marker stigmergy:markerFor ?order .
+
+      {SELECT DISTINCT ?marker WHERE {
+      ?marker a stigmergy:Marker .
+
+      FILTER NOT EXISTS {
+        ?marker schema:supply ?supply .
+        FILTER NOT EXISTS { ?existingProduct a ?supply }
+      }}}}}
+
+
+   BIND (STRDT(STR(?uri), xsd:anyURI) as ?productionUri)
+   }
+   LIMIT 1
+}
