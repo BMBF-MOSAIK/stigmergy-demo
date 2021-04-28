@@ -13,6 +13,26 @@ simultaneously executed orders. The purpose of the presented coordination algori
 
 ## Setup
 
+### 1. Install AJAN
+
+1. Get AJAN-Service from https://github.com/aantakli/AJAN-service/
+2. On commit https://github.com/aantakli/AJAN-service/commit/d27a54471e17f8adc30a1869e06cbe7ca7cc434f , install according to readme
+3. Get the AJAN-Editor from https://github.com/aantakli/AJAN-editor
+4. On commit https://github.com/aantakli/AJAN-editor/commit/ecd132eaae6cb025d3e60e2ec91351bbfa85ed79, install according to readme
+
+### 2. Import resources
+
+1. Run AJAN by:
+    1. `startTripleStore.bat`
+    1. `startAJAN-loadTTL-false.bat`
+3. Run editor according to readme
+4. On tabs "Agents", select File -> Import Repository and select  `agents/agents.ttl` from this repo      
+6. On tabs "Behavior", selct File -> Import BT, and via this, import both `behavior-trees/mark.ttl` and `behavior-trees/produce.ttl`
+7. Open RDF4j Workbench: http://localhost:8090/workbench
+    1. „Repositories“ -> „editor_data“
+    2. Add“ -> Uncheck „use base URI as context identifier“ -> „RDF Data File“ -> select`queries/statements_stigmergy.trig` -> Upload
+
+
 ## Running the scenario
 
 ## Acknowldegements
