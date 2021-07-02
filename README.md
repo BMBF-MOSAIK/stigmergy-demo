@@ -44,7 +44,24 @@ simultaneously executed orders. The purpose of the presented coordination algori
 ## Running the scenario
 
 1. Create Agents:
-    1. 
+    1. In tabs "Agents", select "Instances"
+    2. Click "+" to create a new Instance
+    3. Select Template "MarkerAgent" and assign a name to the agent
+    4. Repeat for the "Producer" Agent
+
+2. Execute the marking algorithm
+    1. Select the newly created "Marker" agent instance
+    2. Scroll down to the "Send Message" dialogue field, and enter the following RDF snippet below
+    3. Click the "Mail" Icon
+    4. What you should observe: In the Fuseki Triple Store Model, you should find now newly created RDF that encodes stigmergy markers
+
+```
+@prefix order: <http://localhost:3030/orders/#>
+@prefix mosaik: <http://www.mosaik-projekt.de/vocab/#>
+<http://me> mosaik:ordered order:equippedModule .
+```
+
+
 ## Acknowldegements
 
 This work has been supported by the German Federal Ministry for Education and Research (BMBF) as part of the MOSAIK project (grant no. 01IS18070-C).
